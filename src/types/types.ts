@@ -1,3 +1,4 @@
-export type CounterState = {
-  value: number
+export type User = {
+  uid: string
+  email: string
 }
