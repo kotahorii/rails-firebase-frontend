@@ -5,13 +5,14 @@ import {
 } from 'firebase/auth'
 import { auth } from '../firebase'
 import { useNavigate } from 'react-router'
-
+import axios from 'axios'
 
 export const useFirebaseAuth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLogin, setIsLogin] = useState(true)
   const navigate = useNavigate()
+  const url = `${process.env.REACT_APP_REST_URL}`
 
   const emailChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
@@ -39,8 +40,28 @@ export const useFirebaseAuth = () => {
         resetInput()
       } else {
         try {
-          await createUserWithEmailAndPassword(auth, email, password)
-          navigate('/main')
+          const res = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          )
+          const token = await res.user.getIdToken(true).then((idToken) => {
+            return idToken
+          })
+          const params = {
+            token: token,
+            registration: { email: res.user.email },
+          }
+
+          await axios
+            .post(url, params)
+            .then((res) => {
+              console.log(res.data)
+              navigate('/main')
+            })
+            .catch((e) => {
+              alert(e.message)
+            })
         } catch (e) {
           alert(e.message)
         }
