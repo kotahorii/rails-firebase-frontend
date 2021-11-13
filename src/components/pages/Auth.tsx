@@ -1,8 +1,6 @@
 import { memo, VFC } from 'react'
 import { useFirebaseAuth } from '../../hooks/useFirebaseAuth'
 import { SwitchVerticalIcon } from '@heroicons/react/solid'
-import { auth } from '../../firebase'
-import { useLogout } from '../../hooks/useLogout'
 
 const AuthMemo: VFC = () => {
   const {

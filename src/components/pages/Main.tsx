@@ -1,5 +1,4 @@
-import { memo, useEffect, VFC } from 'react'
-import { useAppSelector } from '../../app/hooks'
+import { memo, VFC } from 'react'
 import { auth } from '../../firebase'
 
 import { useLogout } from '../../hooks/useLogout'
