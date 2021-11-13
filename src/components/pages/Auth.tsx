@@ -12,6 +12,7 @@ const AuthMemo: VFC = () => {
     authUser,
     toggleMode,
   } = useFirebaseAuth()
+
   return (
     <>
       <form

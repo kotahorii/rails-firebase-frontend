@@ -7,11 +7,10 @@ import { auth } from '../firebase'
 export const useAuthState = () => {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (authUser) => {
-      setIsLoading(true)
       if (authUser) {
         dispatch(
           login({
