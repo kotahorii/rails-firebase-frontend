@@ -1,5 +1,4 @@
 import { memo, VFC } from 'react'
-import { auth } from '../../firebase'
 import { useAuthState } from '../../hooks/useAuthState'
 
 import { useLogout } from '../../hooks/useLogout'
