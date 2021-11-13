@@ -5,6 +5,8 @@ import {
 } from 'firebase/auth'
 import { auth } from '../firebase'
 import { useNavigate } from 'react-router'
+
+
 export const useFirebaseAuth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,20 +31,16 @@ export const useFirebaseAuth = () => {
       e.preventDefault()
       if (isLogin) {
         try {
-          await signInWithEmailAndPassword(auth, email, password).then(() => {
-            navigate('/main')
-          })
+          await signInWithEmailAndPassword(auth, email, password)
+          navigate('/main')
         } catch (e) {
           alert(e.message)
         }
         resetInput()
       } else {
         try {
-          await createUserWithEmailAndPassword(auth, email, password).then(
-            () => {
-              navigate('/main')
-            }
-          )
+          await createUserWithEmailAndPassword(auth, email, password)
+          navigate('/main')
         } catch (e) {
           alert(e.message)
         }
