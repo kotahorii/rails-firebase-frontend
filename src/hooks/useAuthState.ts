@@ -26,7 +26,7 @@ export const useAuthState = () => {
     return () => {
       unsub()
     }
-  }, [])
+  }, [dispatch])
   return {
     user,
     isLoading,

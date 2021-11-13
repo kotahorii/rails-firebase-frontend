@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { Navigate, Route } from 'react-router'
+import { Navigate } from 'react-router'
 import { useAuthState } from '../../hooks/useAuthState'
 
 type Props = {
